@@ -21,7 +21,7 @@
         "test": {
             "docker": [
                 {
-                    "image": "cimg/base:2021.04"
+                    "image": "circleci/php:latest"
                 }
             ],
             "resource_class": "medium",
@@ -38,7 +38,7 @@
         "check": {
             "docker": [
                 {
-                    "image": "cimg/ruby:latest"
+                    "image": circleci/ruby:latest"
                 }
             ],
             "resource_class": "medium",
@@ -55,7 +55,7 @@
         "deploy": {
             "docker": [
                 {
-                    "image": "cimg/php:latest"
+                    "image": "circleci/rust:latest"
                 }
             ],
             "resource_class": "medium",
