@@ -4,7 +4,7 @@
         "build": {
             "docker": [
                 {
-                    "image": "circleci/node:12"
+                    "image": "cimg/go:latest"
                 }
             ],
             "resource_class": "medium",
@@ -21,7 +21,7 @@
         "test": {
             "docker": [
                 {
-                    "image": "circleci/node:12"
+                    "image": "cimg/base:2021.04"
                 }
             ],
             "resource_class": "medium",
@@ -38,7 +38,7 @@
         "check": {
             "docker": [
                 {
-                    "image": "circleci/node:12"
+                    "image": "cimg/ruby:latest"
                 }
             ],
             "resource_class": "medium",
@@ -55,7 +55,7 @@
         "deploy": {
             "docker": [
                 {
-                    "image": "circleci/node:12"
+                    "image": "cimg/php:latest"
                 }
             ],
             "resource_class": "medium",
