@@ -38,7 +38,7 @@
         "check": {
             "docker": [
                 {
-                    "image": circleci/ruby:latest"
+                    "image": "circleci/ruby:latest"
                 }
             ],
             "resource_class": "medium",
