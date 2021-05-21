@@ -13,7 +13,7 @@
                 {
                     "run": {
                         "name": "Build",
-                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                        "command": "$HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
                     }
                 }
             ]
@@ -30,7 +30,7 @@
                 {
                     "run": {
                         "name": "Test",
-                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                        "command": "$HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
                     }
                 }
             ]
@@ -47,7 +47,7 @@
                 {
                     "run": {
                         "name": "Check",
-                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                        "command": "$HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
                     }
                 }
             ]
@@ -64,7 +64,7 @@
                 {
                     "run": {
                         "name": "Deploy",
-                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                        "command": "$HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
                     }
                 }
             ]
